@@ -55,7 +55,7 @@ $ echo "go mod vendor"
 
 ## Features
 
-- [x] 
+- [x] `gitea_token_client.GiteaTokenClient` to let api client easy to use
 - [ ] more perfect test case coverage
 - [ ] more perfect benchmark case
 
@@ -75,7 +75,7 @@ $ echo "go mod vendor"
 
 ## usage
 
-###  gitea_token_client.GiteaTokenClient
+### gitea_token_client.GiteaTokenClient
 
 ```go
 package foo
