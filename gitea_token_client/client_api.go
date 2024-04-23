@@ -14,6 +14,15 @@ type GiteaApiResponse struct {
 	*http.Response
 }
 
+// ApiGiteaStatusCode sends a request to the Gitea API and returns the status code
+func (g *GiteaTokenClient) ApiGiteaStatusCode(method, path string, header http.Header, body io.Reader) (int, error) {
+	resp, err := g.doApiRequest(method, path, header, body)
+	if err != nil {
+		return -1, err
+	}
+	return resp.StatusCode, nil
+}
+
 // ApiGiteaGet sends a GET request to the Gitea API and returns the response
 func (g *GiteaTokenClient) ApiGiteaGet(httpPath string, header http.Header, response interface{}) (*GiteaApiResponse, error) {
 	return g.getApiParsedResponse(http.MethodGet, httpPath, header, nil, response)
@@ -104,14 +113,6 @@ func (g *GiteaTokenClient) getApiResponse(method, path string, header http.Heade
 		return nil, resp, err
 	}
 	return data, resp, nil
-}
-
-func (g *GiteaTokenClient) getApiStatusCode(method, path string, header http.Header, body io.Reader) (int, error) {
-	resp, err := g.doApiRequest(method, path, header, body)
-	if err != nil {
-		return -1, err
-	}
-	return resp.StatusCode, nil
 }
 
 func (g *GiteaTokenClient) doApiRequest(method, path string, header http.Header, body io.Reader) (*GiteaApiResponse, error) {

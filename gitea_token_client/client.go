@@ -52,6 +52,8 @@ type GiteaTokenClientFunc interface {
 }
 
 type GiteaApiFunc interface {
+	ApiGiteaStatusCode(method, path string, header http.Header, body io.Reader) (int, error)
+
 	ApiGiteaGet(httpPath string, header http.Header, response interface{}) (*GiteaApiResponse, error)
 
 	ApiGiteaPostJson(httpPath string, header http.Header, body interface{}, response interface{}) (*GiteaApiResponse, error)
