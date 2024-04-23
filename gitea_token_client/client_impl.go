@@ -103,6 +103,10 @@ func (g *GiteaTokenClient) IsDebug() bool {
 	return g.debug
 }
 
+func (g *GiteaTokenClient) GetContext() context.Context {
+	return g.ctx
+}
+
 // GiteaClient returns the gitea.Client
 func (g *GiteaTokenClient) GiteaClient() *gitea.Client {
 	return g.client
