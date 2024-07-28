@@ -3,7 +3,7 @@ module github.com/sinlov-go/gitea-client-wrapper
 go 1.19
 
 require (
-	code.gitea.io/sdk/gitea v0.18.0
+	code.gitea.io/sdk/gitea v0.19.0
 	github.com/sinlov-go/unittest-kit v1.1.0
 	github.com/stretchr/testify v1.9.0
 )
