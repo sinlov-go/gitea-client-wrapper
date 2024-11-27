@@ -14,6 +14,10 @@ type GiteaListOpt struct {
 	PageSize int
 }
 
+// GetURLQuery returns the query parameters for the given options.
+// use as:
+//
+//	opt.GetURLQuery().Encode()
 func (o *GiteaListOpt) GetURLQuery() url.Values {
 	query := make(url.Values)
 	query.Add("page", fmt.Sprintf("%d", o.Page))

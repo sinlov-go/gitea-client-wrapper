@@ -7,11 +7,19 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+	"net/url"
+	"strconv"
+	"strings"
 )
 
 // GiteaApiResponse represents the gitea response
 type GiteaApiResponse struct {
 	*http.Response
+
+	FirstPage int
+	PrevPage  int
+	NextPage  int
+	LastPage  int
 }
 
 // ApiGiteaStatusCode sends a request to the Gitea API and returns the status code
@@ -158,7 +166,57 @@ func (g *GiteaTokenClient) doApiRequest(method, path string, header http.Header,
 		fmt.Printf("Response: %v\n\n", resp)
 	}
 
-	return &GiteaApiResponse{resp}, nil
+	return newResponse(resp), nil
+}
+
+func newResponse(r *http.Response) *GiteaApiResponse {
+	response := &GiteaApiResponse{Response: r}
+	response.parseLinkHeader()
+	return response
+}
+
+func (r *GiteaApiResponse) parseLinkHeader() {
+	link := r.Header.Get("Link")
+	if link == "" {
+		return
+	}
+
+	links := strings.Split(link, ",")
+	for _, l := range links {
+		u, param, ok := strings.Cut(l, ";")
+		if !ok {
+			continue
+		}
+		u = strings.Trim(u, " <>")
+
+		key, value, ok := strings.Cut(strings.TrimSpace(param), "=")
+		if !ok || key != "rel" {
+			continue
+		}
+
+		value = strings.Trim(value, "\"")
+
+		parsed, err := url.Parse(u)
+		if err != nil {
+			continue
+		}
+
+		page := parsed.Query().Get("page")
+		if page == "" {
+			continue
+		}
+
+		switch value {
+		case "first":
+			r.FirstPage, _ = strconv.Atoi(page)
+		case "prev":
+			r.PrevPage, _ = strconv.Atoi(page)
+		case "next":
+			r.NextPage, _ = strconv.Atoi(page)
+		case "last":
+			r.LastPage, _ = strconv.Atoi(page)
+		}
+	}
 }
 
 // Converts a response for a HTTP status code indicating an error condition
