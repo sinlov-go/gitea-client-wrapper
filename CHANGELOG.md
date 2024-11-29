@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [convention-change-log](https://github.com/convention-change/convention-change-log) for commit guidelines.
 
+## [1.3.0](https://github.com/sinlov-go/gitea-client-wrapper/compare/1.2.0...v1.3.0) (2024-11-29)
+
+### ✨ Features
+
+* add remote Gitea version fetching and client helper functions ([30c9c7dc](https://github.com/sinlov-go/gitea-client-wrapper/commit/30c9c7dc48080b00d1426afa64b6fa2f2b72d8a2)), feat [#12](https://github.com/sinlov-go/gitea-client-wrapper/issues/12)
+
 ## [1.2.0](https://github.com/sinlov-go/gitea-client-wrapper/compare/1.1.0...v1.2.0) (2024-11-27)
 
 ### ✨ Features
