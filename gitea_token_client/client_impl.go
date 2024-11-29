@@ -63,6 +63,11 @@ func (g *GiteaTokenClient) NewClientWithHttpTimeout(url, accessToken string, tim
 	g.httpClient = httpClient
 	g.accessToken = accessToken
 
+	errNewClientFetchVersion := g.newClientFetchVersion()
+	if errNewClientFetchVersion != nil {
+		return fmt.Errorf("failed to get remote gitea version: %s", errNewClientFetchVersion)
+	}
+
 	return nil
 }
 
@@ -88,7 +93,36 @@ func (g *GiteaTokenClient) NewClient(url, accessToken string, httpClient *http.C
 	g.httpClient = httpClient
 	g.accessToken = accessToken
 
+	errNewClientFetchVersion := g.newClientFetchVersion()
+	if errNewClientFetchVersion != nil {
+		return fmt.Errorf("failed to get remote gitea version: %s", errNewClientFetchVersion)
+	}
+
 	return nil
+}
+
+func (g *GiteaTokenClient) newClientFetchVersion() error {
+	if g.client == nil {
+		return fmt.Errorf("must new client then use this api")
+	}
+
+	version, response, errVersion := g.client.ServerVersion()
+	if errVersion != nil {
+		return fmt.Errorf("failed to get remote gitea version: %s", errVersion)
+	}
+	if response.StatusCode != 200 {
+		return fmt.Errorf("failed to get remote gitea version: %s", response.Status)
+	}
+	g.remoteGiteaVersion = version
+
+	return nil
+}
+
+func (g *GiteaTokenClient) GetRemoteGiteaVersion() string {
+	if g.client == nil {
+		panic("must use method NewClient* then GetRemoteGiteaVersion()")
+	}
+	return g.remoteGiteaVersion
 }
 
 // SetDebug sets the debug status for the client from gitea.Client

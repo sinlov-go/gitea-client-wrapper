@@ -20,17 +20,22 @@ type GiteaTokenClient struct {
 	mutex      *sync.RWMutex
 	httpClient *http.Client
 
-	accessToken string
-	username    string
-	password    string
-	otp         string
-	sudo        string
+	accessToken        string
+	username           string
+	password           string
+	otp                string
+	sudo               string
+	remoteGiteaVersion string
 }
 
 type GiteaTokenClientFunc interface {
 	NewClientWithHttpTimeout(url, accessToken string, timeoutSecond uint, insecure bool) error
 
 	NewClient(url, accessToken string, httpClient *http.Client) error
+
+	newClientFetchVersion() error
+
+	GetRemoteGiteaVersion() string
 
 	SetDebug(debug bool)
 
