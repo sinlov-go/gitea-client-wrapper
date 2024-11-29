@@ -2,12 +2,17 @@ package gitea_token_client
 
 import (
 	"fmt"
+	"net/http"
 	"net/url"
 )
 
 const (
 	BaseGiteaApi = "/api/v1"
 )
+
+// JsonHeader is a default header for json request
+// for http.MethodPost , http.MethodPatch , http.MethodPut, http.MethodDelete
+var JsonHeader = http.Header{"content-type": []string{"application/json"}}
 
 var giteaBaseApi = BaseGiteaApi
 

@@ -56,6 +56,13 @@ $ echo "go mod vendor"
 ## Features
 
 - [x] `gitea_token_client.GiteaTokenClient` to let api client easy to use
+- [x] `client helper for gitea api` (1.2.+)
+    - [x] `GiteaApiParsef()` can parse api url by base api
+    - [x] `GetBaseApi()` can get base api
+    - [x] `SetBaseApi()` can change base api
+    - [x] `EscapeValidatePathSegments` help function to validate and encode url path segments
+    - [x] var `JsonHeader` for base api header (1.3.+)
+- [x] `GetRemoteGiteaVersion()` to get gitea server version once (1.3.+)
 - [ ] more perfect test case coverage
 - [ ] more perfect benchmark case
 
