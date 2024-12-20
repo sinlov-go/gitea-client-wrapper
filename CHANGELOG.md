@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [convention-change-log](https://github.com/convention-change/convention-change-log) for commit guidelines.
 
+## [1.4.0](https://github.com/sinlov-go/gitea-client-wrapper/compare/1.3.0...v1.4.0) (2024-12-20)
+
 ## [1.3.0](https://github.com/sinlov-go/gitea-client-wrapper/compare/1.2.0...v1.3.0) (2024-11-29)
 
 ### ✨ Features
