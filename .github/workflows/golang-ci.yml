@@ -12,7 +12,7 @@ jobs:
     strategy:
       matrix:
         go:
-          - '^1.19'
+          - '^1.20'
           - '1.19.13'
         os:
           - macos-latest
