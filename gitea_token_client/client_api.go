@@ -95,6 +95,9 @@ func (g *GiteaTokenClient) getApiParsedResponse(method, path string, header http
 		}
 		return resp, err
 	}
+	if obj == nil {
+		return resp, nil
+	}
 	return resp, json.Unmarshal(data, obj)
 }
 
