@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [convention-change-log](https://github.com/convention-change/convention-change-log) for commit guidelines.
 
+## [1.4.1](https://github.com/sinlov-go/gitea-client-wrapper/compare/1.4.0...v1.4.1) (2025-01-06)
+
+### 🐛 Bug Fixes
+
+* handle nil response body in API request ([4cc72314](https://github.com/sinlov-go/gitea-client-wrapper/commit/4cc723145ff4b9bdaf63d8dc735416676b8fbb7e))
+
 ## [1.4.0](https://github.com/sinlov-go/gitea-client-wrapper/compare/1.3.0...v1.4.0) (2024-12-20)
 
 ## [1.3.0](https://github.com/sinlov-go/gitea-client-wrapper/compare/1.2.0...v1.3.0) (2024-11-29)
