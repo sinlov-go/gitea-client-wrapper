@@ -3,7 +3,7 @@
 # Author: sinlov
 # dockerfile offical document https://docs.docker.com/engine/reference/builder/
 # https://hub.docker.com/_/golang
-FROM golang:1.20.14 AS builder
+FROM golang:1.23.8 AS builder
 
 ARG GO_ENV_PACKAGE_NAME=github.com/sinlov-go/gitea-client-wrapper
 ARG GO_ENV_ROOT_BUILD_BIN_NAME=gitea-client-wrapper
