@@ -1,6 +1,8 @@
 module github.com/sinlov-go/gitea-client-wrapper
 
-go 1.20
+go 1.23
+
+toolchain go1.24.3
 
 require (
 	code.gitea.io/sdk/gitea v0.21.0
