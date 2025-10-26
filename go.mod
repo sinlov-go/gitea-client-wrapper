@@ -5,7 +5,7 @@ go 1.23.0
 toolchain go1.23.8
 
 require (
-	code.gitea.io/sdk/gitea v0.22.0
+	code.gitea.io/sdk/gitea v0.22.1
 	github.com/sinlov-go/unittest-kit v1.2.1
 	github.com/stretchr/testify v1.11.1
 )
